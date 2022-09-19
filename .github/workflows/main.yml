@@ -20,16 +20,13 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run tests
-      run: npm run test:headless
-
     - name: Build
-      run: npm run build -- --base-href=https://github.com/water1st/test --output-path=docs
+      run: npm run build -- --base-href=https://github.com/water1st/test
 
     - name: Deploy
       if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: dist/angular-github-actions
+        github_token: ${{ secrets.TOKEN }}
+        publish_dir: docs
         enable_jekyll: true
